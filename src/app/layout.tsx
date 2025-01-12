@@ -1,7 +1,7 @@
 'use client';
 import { useDarkMode } from '../hooks/use-darkmode';
 import Header from './components/Header';
-import '@/app/globals.scss'; 
+import '@/app/globals.css'; 
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const { isDarkMode } = useDarkMode();
