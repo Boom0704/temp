@@ -1,9 +1,11 @@
+// src/hooks/use-darkmode.tsx
+
 'use client';
 
 import { useState, useEffect } from 'react';
 
 export const useDarkMode = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
     const savedMode = localStorage.getItem('darkMode');
@@ -16,13 +18,18 @@ export const useDarkMode = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('darkMode', 'true');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('darkMode', 'false');
+    }
+  }, [isDarkMode]);
+
   const toggleDarkMode = () => {
-    setIsDarkMode(prevMode => {
-      const newMode = !prevMode;
-      localStorage.setItem('darkMode', newMode.toString());
-      document.body.classList.toggle('dark', newMode);
-      return newMode;
-    });
+    setIsDarkMode(prevMode => !prevMode);
   };
 
   return { isDarkMode, toggleDarkMode };

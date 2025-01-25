@@ -1,9 +1,11 @@
-import Image from "next/image";
+// src/app/page.tsx
+
+'use client';
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <h1>home</h1>
+    <div className="home min-h-screen flex items-center justify-center bg-background">
+      <h1 className="text-4xl">홈 페이지</h1>
     </div>
   );
 }
